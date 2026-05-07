@@ -1,0 +1,241 @@
+version: 0.1.0
+project:
+  frameworks: []
+  name: lakkhanadi-catukka-analytics
+  language: typescript
+ai_command: claude --print --model claude-opus-4-6 --tools ""
+coding_principles: null
+scan:
+  source_dirs:
+  - src/
+  test_dirs:
+  - tests/
+  doc_dirs:
+  - docs/
+  config_files: []
+  exclude:
+  - '**/node_modules/**'
+  - '**/__pycache__/**'
+  - '**/dist/**'
+graph:
+  store: jsonl
+  path: codd/scan
+bands:
+  green:
+    min_confidence: 0.9
+    min_evidence_count: 2
+  amber:
+    min_confidence: 0.5
+propagation:
+  max_depth: 10
+  stop_at_contract_boundary: true
+fix:
+  test_command: null
+  max_attempts: 3
+verify:
+  typecheck_command: null
+  test_command: null
+  report_output: docs/test/verify_report.md
+  e2e_setup_command: null
+  e2e_command: null
+  e2e_deploy_command: null
+  e2e_ci_command: null
+conventions: []
+wave_config:
+  '1':
+  - node_id: test:acceptance-criteria
+    output: docs/test/acceptance_criteria.md
+    title: Acceptance Criteria
+    depends_on:
+    - id: req:lakkhanadi-catukka-analytics-requirements
+      relation: derives_from
+      semantic: governance
+    conventions:
+    - targets:
+      - module:analyzer
+      - module:formatter
+      reason: Output must strictly follow the specified four-phase table + detailed
+        explanation format; violation is release-blocking.
+    - targets:
+      - module:analyzer
+      reason: Each analysis item must contain minimum 3-5 sentences with concrete
+        examples; abstract-only output is release-blocking.
+    - targets:
+      - module:normalizer
+      reason: Pali term normalization (padahāna→padaṭṭhāna, paccupahāna→paccupaṭṭhāna)
+        must be enforced; incorrect term handling is release-blocking.
+    - targets:
+      - module:analyzer
+      reason: Must not make authoritative claims as religious, medical, or legal authority;
+        violation is release-blocking.
+    modules:
+    - analyzer
+    - formatter
+    - normalizer
+  - node_id: governance:adr-skill-platform
+    output: docs/governance/adr_skill_platform.md
+    title: 'ADR: Codex Skill Platform and Prompt Architecture'
+    depends_on:
+    - id: req:lakkhanadi-catukka-analytics-requirements
+      relation: derives_from
+      semantic: governance
+    conventions:
+    - targets:
+      - module:prompt
+      reason: Skill must be implemented as a Codex skill (not GPTs); platform choice
+        is a release-blocking technical constraint.
+    modules:
+    - prompt
+  '2':
+  - node_id: design:system-design
+    output: docs/design/system_design.md
+    title: System Design
+    depends_on:
+    - id: test:acceptance-criteria
+      relation: constrained_by
+      semantic: governance
+    - id: governance:adr-skill-platform
+      relation: constrained_by
+      semantic: governance
+    conventions:
+    - targets:
+      - module:analyzer
+      - module:formatter
+      reason: Four-phase analysis must cover all four aspects (lakkhaṇa, rasa, paccupaṭṭhāna,
+        padaṭṭhāna) for every input without omission; incomplete coverage is release-blocking.
+    - targets:
+      - module:analyzer
+      reason: Buddhist terms must always be accompanied by modern-language paraphrase;
+        unexplained Pali-only output is release-blocking.
+    - targets:
+      - module:analyzer
+      reason: Applied analysis of non-canonical subjects must be explicitly marked
+        as 応用的分析; unmarked non-canonical claims are release-blocking.
+    modules:
+    - prompt
+    - analyzer
+    - formatter
+    - normalizer
+  '3':
+  - node_id: design:prompt-structure
+    output: docs/detailed_design/prompt_structure.md
+    title: Prompt Structure and Instruction Flow
+    depends_on:
+    - id: design:system-design
+      relation: depends_on
+      semantic: technical
+    conventions:
+    - targets:
+      - module:prompt
+      - module:analyzer
+      reason: 'Prompt must encode the observation-first principle: no immediate moral
+        judgment of user input; violation is release-blocking.'
+    - targets:
+      - module:prompt
+      reason: Length adaptation rules (short/normal/detailed) must be encoded in prompt
+        logic; missing adaptation is release-blocking.
+    modules:
+    - prompt
+    - analyzer
+  - node_id: design:output-template
+    output: docs/detailed_design/output_template.md
+    title: Output Format Template and Rendering Rules
+    depends_on:
+    - id: design:system-design
+      relation: depends_on
+      semantic: technical
+    conventions:
+    - targets:
+      - module:formatter
+      reason: 'Output must include: subject restatement, summary table (4 rows), detailed
+        explanation (4 sections), and closing summary; missing sections are release-blocking.'
+    - targets:
+      - module:formatter
+      reason: Detailed sections must include concrete examples tied to user input,
+        comparative distinctions, and multi-perspective observations; generic output
+        is release-blocking.
+    modules:
+    - formatter
+  - node_id: design:normalizer-rules
+    output: docs/detailed_design/normalizer_rules.md
+    title: Pali Term Normalization and Input Handling
+    depends_on:
+    - id: design:system-design
+      relation: depends_on
+      semantic: technical
+    conventions:
+    - targets:
+      - module:normalizer
+      reason: Known Pali misspelling patterns must be normalized to standard romanization
+        before analysis; unhandled known variants are release-blocking.
+    modules:
+    - normalizer
+  '4':
+  - node_id: design:analysis-quality-model
+    output: docs/detailed_design/analysis_quality_model.md
+    title: Analysis Quality Model and Writing Guidelines
+    depends_on:
+    - id: design:prompt-structure
+      relation: depends_on
+      semantic: technical
+    - id: design:output-template
+      relation: depends_on
+      semantic: technical
+    conventions:
+    - targets:
+      - module:analyzer
+      reason: paccupaṭṭhāna and padaṭṭhāna sections must include body sensation, thought/emotion/image,
+        and world-perception dimensions; shallow treatment is release-blocking.
+    - targets:
+      - module:analyzer
+      reason: padaṭṭhāna must describe proximate conditions (not root causes) in non-blaming
+        observational tone; causal over-attribution is release-blocking.
+    - targets:
+      - module:analyzer
+      reason: Connective phrases (つまり, たとえば, ここで重要なのは) must be used to maintain reader
+        comprehension flow; wall-of-text output is release-blocking.
+    modules:
+    - analyzer
+  '5':
+  - node_id: plan:implementation-plan
+    output: docs/plan/implementation_plan.md
+    title: Implementation Plan
+    depends_on:
+    - id: design:prompt-structure
+      relation: depends_on
+      semantic: technical
+    - id: design:output-template
+      relation: depends_on
+      semantic: technical
+    - id: design:normalizer-rules
+      relation: depends_on
+      semantic: technical
+    - id: design:analysis-quality-model
+      relation: depends_on
+      semantic: technical
+    modules:
+    - prompt
+    - analyzer
+    - formatter
+    - normalizer
+  - node_id: test:test-strategy
+    output: docs/test/test_strategy.md
+    title: Test Strategy
+    depends_on:
+    - id: test:acceptance-criteria
+      relation: derives_from
+      semantic: governance
+    - id: design:analysis-quality-model
+      relation: depends_on
+      semantic: technical
+    conventions:
+    - targets:
+      - module:analyzer
+      - module:formatter
+      - module:normalizer
+      reason: All acceptance criteria must have corresponding test cases with pass/fail
+        examples; untested criteria cannot be released.
+    modules:
+    - analyzer
+    - formatter
+    - normalizer
