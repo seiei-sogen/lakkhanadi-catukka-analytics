@@ -38,7 +38,7 @@
 ## 全体進捗
 
 - [ ] Phase 1: 基盤構築
-- [ ] Phase 2: Skill 本体プロンプト
+- [x] Phase 2: Skill 本体プロンプト
 - [ ] Phase 3: 補助スクリプトとテストデータ
 - [ ] Phase 4: LLM-as-judge と検証
 
@@ -80,15 +80,15 @@ TASK-0001 → TASK-0003
 
 ### タスク一覧
 
-- [ ] [TASK-0004: SKILL.md フロントマター + 役割・方針セクション](TASK-0004.md) - 8h (TDD) 🔵
-- [ ] [TASK-0005: SKILL.md 出力テンプレート定義](TASK-0005.md) - 8h (TDD) 🔵
-- [ ] [TASK-0006: SKILL.md 入力種別判定 + Edge ケース処理](TASK-0006.md) - 8h (TDD) 🟡
-- [ ] [TASK-0007: SKILL.md 長さモード自動判定](TASK-0007.md) - 8h (TDD) 🔵
-- [ ] [TASK-0008: SKILL.md 安全性判定 + 警告 + 観察的捉え直し](TASK-0008.md) - 8h (TDD) 🔵
-- [ ] [TASK-0009: SKILL.md 古典 vs 応用判定](TASK-0009.md) - 8h (TDD) 🔵
-- [ ] [TASK-0010: SKILL.md Pali 正規化テーブル（フォールバック）](TASK-0010.md) - 8h (TDD) 🔵
-- [ ] [TASK-0011: SKILL.md 四相生成チェックリスト + 観点網羅指示](TASK-0011.md) - 8h (TDD) 🔵
-- [ ] [TASK-0012: SKILL.md 統合と整合性レビュー](TASK-0012.md) - 8h (TDD) 🟡
+- [x] [TASK-0004: SKILL.md フロントマター + 役割・方針セクション](TASK-0004.md) - 8h (TDD) 🔵
+- [x] [TASK-0005: SKILL.md 出力テンプレート定義](TASK-0005.md) - 8h (TDD) 🔵
+- [x] [TASK-0006: SKILL.md 入力種別判定 + Edge ケース処理](TASK-0006.md) - 8h (TDD) 🟡
+- [x] [TASK-0007: SKILL.md 長さモード自動判定](TASK-0007.md) - 8h (TDD) 🔵
+- [x] [TASK-0008: SKILL.md 安全性判定 + 警告 + 観察的捉え直し](TASK-0008.md) - 8h (TDD) 🔵
+- [x] [TASK-0009: SKILL.md 古典 vs 応用判定](TASK-0009.md) - 8h (TDD) 🔵
+- [x] [TASK-0010: SKILL.md Pali 正規化テーブル（フォールバック）](TASK-0010.md) - 8h (TDD) 🔵
+- [x] [TASK-0011: SKILL.md 四相生成チェックリスト + 観点網羅指示](TASK-0011.md) - 8h (TDD) 🔵
+- [x] [TASK-0012: SKILL.md 統合と整合性レビュー](TASK-0012.md) - 8h (TDD) 🟡
 
 ### 依存関係
 
