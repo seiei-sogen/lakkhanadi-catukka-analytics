@@ -1,2 +1,19 @@
 
 作業メモ.md
+
+# Rust build output
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Environment variables
+.env
+
+# Test coverage
+coverage/

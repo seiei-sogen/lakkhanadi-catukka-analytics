@@ -3,6 +3,8 @@
 **作成日**: 2026-05-05
 **ヒアリング実施**: step4 既存情報ベースの差分ヒアリング
 
+> **2026-05-07 注記**: 本記録中の「TypeScript / TS」は、後の REQ-403 改訂で **Rust** に変更された。原文は当時の議論をそのまま残す。最新の実装言語は `codd/codd.yaml`・`docs/spec/.../requirements.md` REQ-403 を参照。
+
 ## ヒアリング目的
 
 PRD（既存 GPTs プロンプト = `docs/requirements/requirements.md` / `spec.md`）と codd ワークフロー設定（`codd/codd.yaml`）から把握できる事項のうち、**Skill 化に当たって未定義・曖昧だった以下のカテゴリ**について、4 ラウンド・計 15 問のヒアリングを実施した。

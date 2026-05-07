@@ -1,11 +1,11 @@
 /**
- * lakkhanadi-catukka-analytics-requirements 型定義
+ * lakkhanadi-catukka-analytics-requirements 型定義（設計契約の記法）
  *
  * 作成日: 2026-05-06
  * 関連設計: architecture.md / dataflow.md / design-interview.md
  *
  * 対象範囲:
- * - 補助 TypeScript スクリプト `skills/lakkhanadi-catukka/scripts/normalize.ts` の公開 API
+ * - 補助 Rust スクリプト `skills/lakkhanadi-catukka/scripts/normalize.rs` の公開 API（契約）
  * - LLM-as-judge プロンプト `skills/lakkhanadi-catukka/tests/judge/SKILL_JUDGE.md` の構造化出力
  * - SKILL.md 本体が概念的に扱う長さモード・四相セクション・分析出力
  *
@@ -15,8 +15,13 @@
  * - 🔴 赤信号: EARS要件定義書・設計文書・ユーザヒアリングにない推測による型定義
  *
  * 備考:
- * - 本プロジェクトは Markdown プロンプト主体の Skill であり、ランタイム上の TS 実装は補助 normalize.ts と
- *   judge プロンプト出力の型表現に限定される (REQ-403)。
+ * - 本プロジェクトは Markdown プロンプト主体の Skill であり、ランタイム上の実装は補助 normalize.rs と
+ *   judge プロンプト出力の構造表現に限定される (REQ-403)。
+ * - 本ファイルは TypeScript 構文を「設計契約の記法」として用いる。実装言語は Rust に変更されたため、
+ *   `normalize.rs` は本ファイルの契約に対応する Rust 構造体・enum・関数シグネチャを再定義する。
+ *   - `Normalize` ⇔ `pub fn normalize(input: &str) -> String`
+ *   - `PaliNormalizationRule` ⇔ `pub struct PaliNormalizationRule { from, to, category, source }`
+ *   - `'known-variant' | 'iast-diacritic'` ⇔ `pub enum Category { KnownVariant, IastDiacritic }`
  * - SKILL.md 本体および LLM 出力 Markdown は型付けせず、type-only な「概念モデル」として共有する。
  */
 
@@ -73,11 +78,11 @@ export const LENGTH_MODE_SENTENCE_RANGE: Record<LengthMode, { min: number; max: 
 };
 
 // ============================================================
-// 3. Pali 表記正規化 (補助 TypeScript スクリプト)
+// 3. Pali 表記正規化 (補助 Rust スクリプト — 本ファイルは契約記法)
 // ============================================================
 
 /**
- * normalize.ts の公開関数シグネチャ
+ * normalize.rs の公開関数シグネチャ（Rust では `pub fn normalize(input: &str) -> String`）
  * 🔵 信頼性: 設計ヒアリング Q5「単純関数 (推奨)」より
  *
  * 既知異形 (REQ-107) と IAST／ダイアクリティカル揺れ (REQ-108) を標準表記に変換し、

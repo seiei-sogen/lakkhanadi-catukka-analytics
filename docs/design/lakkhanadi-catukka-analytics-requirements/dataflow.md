@@ -18,7 +18,7 @@
 ```mermaid
 flowchart TD
     U[ユーザー入力<br/>テキスト] --> H{Skill ホスト<br/>Claude Code / Codex CLI}
-    H -->|前処理フックあり| N1[TS 補助<br/>scripts/normalize.ts]
+    H -->|前処理フックあり| N1[Rust 補助<br/>scripts/normalize.rs]
     H -->|前処理フックなし| S
     N1 --> S[SKILL.md<br/>プロンプト]
     S --> A1{入力種別判定}
@@ -63,7 +63,7 @@ flowchart TD
 sequenceDiagram
     participant U as ユーザー
     participant H as Skill ホスト
-    participant N as TS 正規化（任意）
+    participant N as Rust 正規化（任意）
     participant L as LLM (SKILL.md)
 
     U->>H: 「pathavī-dhātu の四相分析をして」
@@ -82,7 +82,7 @@ sequenceDiagram
 
 **詳細ステップ**:
 1. ユーザーが Skill を明示呼び出し（REQ-409）
-2. Skill ホストが入力を SKILL.md に渡す（前処理フックがあれば TS 正規化を経由）
+2. Skill ホストが入力を SKILL.md に渡す（前処理フックがあれば Rust 正規化を経由）
 3. SKILL.md は入力種別を判定（空 / 意味不明 / 超長文 / 複数 / 通常）→ 通常入力と判定
 4. 長さシグナルを検出（「短く」「詳しく」「具体的に」「納得感」等のキーワード）→ なし → 通常モード
 5. 安全性判定（医療診断・宗教断定・他者評価）→ 通常
@@ -153,7 +153,7 @@ flowchart LR
 ```mermaid
 flowchart TD
     I[入力テキスト] --> H{ホスト前処理<br/>フックあり?}
-    H -->|あり| TS[TS 正規化スクリプト実行]
+    H -->|あり| TS[Rust 正規化スクリプト実行]
     H -->|なし| MD[SKILL.md 内テーブルで正規化]
 
     TS --> R1[正規化規則:<br/>padahāna → padaṭṭhāna<br/>paccupahāna → paccupaṭṭhāna<br/>lakkhana → lakkhaṇa<br/>thana → ṭhāna<br/>... 既知異形 + IAST]
@@ -168,7 +168,7 @@ flowchart TD
 ```
 
 **備考**:
-- 二段冗長: TS スクリプトが利用できない環境（Claude Code skill / Codex CLI で前処理フックを持たない場合）でも、SKILL.md 内テーブルにより同等の正規化が LLM 自身で行われる
+- 二段冗長: Rust スクリプトが利用できない環境（Claude Code skill / Codex CLI で前処理フックを持たない場合）でも、SKILL.md 内テーブルにより同等の正規化が LLM 自身で行われる
 - 「推測まで」（極端に崩れた表記の自動修正）は採用しない（ヒアリングRound 3）
 
 ### フロー 6: 警告 + 観察的捉え直し 🔵
@@ -291,7 +291,7 @@ stateDiagram-v2
 - **構造的整合性**: 4 セクション欠落不可（formatter モジュールが固定テンプレートで担保）
 - **教義的整合性**: 古典に明示されない内容には応用マーカー必須（REQ-105、analyzer モジュールが LLM 判断で担保）
 - **トーン整合性**: 観察的・非難しない口調（NFR-203、prompt モジュールが指示で担保）
-- **表記整合性**: パーリ語標準表記（normalizer モジュール、TS スクリプト + プロンプト内テーブルの二段冗長）
+- **表記整合性**: パーリ語標準表記（normalizer モジュール、Rust スクリプト + プロンプト内テーブルの二段冗長）
 - **judge 検証**: NFR-302 によりこれらすべての整合性をサンプル評価で確認
 
 ## 関連文書

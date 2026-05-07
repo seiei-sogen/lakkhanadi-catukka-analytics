@@ -2,6 +2,8 @@
 
 > **仕様**: [requirements.md](requirements.md)
 > **生成日**: 2026-05-05
+>
+> **2026-05-07 注記**: 「codd の language: typescript の取り扱い」項は、その後の決定で `language: rust` に変更されたため解消済み。詳細は `codd/codd.yaml` と REQ-403 を参照。
 
 **【信頼性レベル凡例】**:
 - 🔵 **青信号**: 要件定義書・ヒアリングで明確に必要と判明したタスク

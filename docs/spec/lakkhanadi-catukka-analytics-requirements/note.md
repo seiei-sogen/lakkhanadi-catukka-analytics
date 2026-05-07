@@ -11,7 +11,7 @@
 
 ## 技術スタック
 
-- **言語**: TypeScript（codd/codd.yaml 宣言）
+- **言語**: Rust（codd/codd.yaml 宣言。補助スクリプトのみ）
 - **ターゲット**: Codex skill（Coding Agent skill 形式での配布）
 - **AI 実行**: `claude --print --model claude-opus-4-6 --tools ""`
 - **フレームワーク**: なし（codd で `frameworks: []`）

@@ -1,0 +1,8 @@
+[package]
+name = "lakkhanadi-catukka-normalize"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "normalize"
+path = "skills/lakkhanadi-catukka/scripts/normalize.rs"

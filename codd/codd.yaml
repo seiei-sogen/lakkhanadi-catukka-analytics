@@ -2,7 +2,7 @@ version: 0.1.0
 project:
   frameworks: []
   name: lakkhanadi-catukka-analytics
-  language: typescript
+  language: rust
 ai_command: claude --print --model claude-opus-4-6 --tools ""
 coding_principles: null
 scan:
@@ -14,7 +14,7 @@ scan:
   - docs/
   config_files: []
   exclude:
-  - '**/node_modules/**'
+  - '**/target/**'
   - '**/__pycache__/**'
   - '**/dist/**'
 graph:

@@ -25,9 +25,9 @@
 
 | フェーズ | 期間 | 成果物 | タスク数 | 工数 | ファイル |
 |---------|------|--------|----------|------|----------|
-| Phase 1 | 〜3 日 | リポジトリ整備・TS 環境・ADR 更新 | 3 | 16h | [TASK-0001〜0003](#phase-1-基盤構築) |
+| Phase 1 | 〜3 日 | リポジトリ整備・Rust 環境・ADR 更新 | 3 | 16h | [TASK-0001〜0003](#phase-1-基盤構築) |
 | Phase 2 | 〜9 日 | SKILL.md 本体（フロントマター〜出力テンプレート） | 9 | 72h | [TASK-0004〜0012](#phase-2-skill-本体プロンプト) |
-| Phase 3 | 〜4 日 | normalize.ts + テスト入力サンプル | 4 | 32h | [TASK-0013〜0016](#phase-3-補助スクリプトとテストデータ) |
+| Phase 3 | 〜4 日 | normalize.rs + テスト入力サンプル | 4 | 32h | [TASK-0013〜0016](#phase-3-補助スクリプトとテストデータ) |
 | Phase 4 | 〜5 日 | LLM-as-judge + プラットフォーム検証 + リリース準備 | 5 | 40h | [TASK-0017〜0021](#phase-4-llm-as-judge-と検証) |
 
 ## タスク番号管理
@@ -44,9 +44,9 @@
 
 ## マイルストーン
 
-- **M1: 基盤完成**: ディレクトリ構造・TS 環境・ADR 更新完了（TASK-0001〜0003）
+- **M1: 基盤完成**: ディレクトリ構造・Rust 環境・ADR 更新完了（TASK-0001〜0003）
 - **M2: SKILL.md 完成**: 統合済み SKILL.md が確定し judge 評価で全 7 サンプルが pass（TASK-0004〜0012）
-- **M3: 補助スクリプト完成**: normalize.ts と単体テスト・テスト入力サンプル一式（TASK-0013〜0016）
+- **M3: 補助スクリプト完成**: normalize.rs と単体テスト・テスト入力サンプル一式（TASK-0013〜0016）
 - **M4: MVP リリース準備完了**: 両プラットフォーム動作確認・受け入れ基準 Must Have 25 件 pass・README 整備（TASK-0017〜0021）
 
 ---
@@ -54,14 +54,14 @@
 ## Phase 1: 基盤構築
 
 **期間**: 約 3 日（16h）
-**目標**: skill ディレクトリ構造・TypeScript 開発環境・両プラットフォーム ADR の確定
-**成果物**: `skills/lakkhanadi-catukka/` 下のディレクトリ・package.json/tsconfig.json・更新された ADR
+**目標**: skill ディレクトリ構造・Rust 開発環境・両プラットフォーム ADR の確定
+**成果物**: `skills/lakkhanadi-catukka/` 下のディレクトリ・Cargo.toml・更新された ADR
 
 ### タスク一覧
 
-- [ ] [TASK-0001: プロジェクトディレクトリ構造とリポジトリ整備](TASK-0001.md) - 4h (DIRECT) 🔵
-- [ ] [TASK-0002: TypeScript ビルド/テスト環境セットアップ](TASK-0002.md) - 4h (DIRECT) 🔵
-- [ ] [TASK-0003: Skill フロントマター仕様調査と ADR 更新](TASK-0003.md) - 8h (DIRECT) 🟡
+- [x] [TASK-0001: プロジェクトディレクトリ構造とリポジトリ整備](TASK-0001.md) - 4h (DIRECT) 🔵
+- [x] [TASK-0002: Rust ビルド/テスト環境セットアップ](TASK-0002.md) - 4h (DIRECT) 🔵
+- [x] [TASK-0003: Skill フロントマター仕様調査と ADR 更新](TASK-0003.md) - 8h (DIRECT) 🟡
 
 ### 依存関係
 
@@ -111,14 +111,14 @@ TASK-0001 ──→ TASK-0004 ──→ TASK-0005 ──┐
 ## Phase 3: 補助スクリプトとテストデータ
 
 **期間**: 約 4 日（32h）
-**目標**: 前処理用 TS スクリプトと judge 評価用入力サンプルを揃える
-**成果物**: `scripts/normalize.ts` + 単体テスト + `tests/samples/*.md` × 7
+**目標**: 前処理用 Rust スクリプトと judge 評価用入力サンプルを揃える
+**成果物**: `scripts/normalize.rs` + 単体テスト + `tests/samples/*.md` × 7
 
 ### タスク一覧
 
-- [ ] [TASK-0013: normalize.ts ルール定義（既知異形 + IAST 揺れ）](TASK-0013.md) - 8h (TDD) 🔵
-- [ ] [TASK-0014: normalize.ts 関数実装](TASK-0014.md) - 8h (TDD) 🔵
-- [ ] [TASK-0015: normalize.ts 単体テスト実装](TASK-0015.md) - 8h (TDD) 🔵
+- [ ] [TASK-0013: normalize.rs ルール定義（既知異形 + IAST 揺れ）](TASK-0013.md) - 8h (TDD) 🔵
+- [ ] [TASK-0014: normalize.rs 関数実装](TASK-0014.md) - 8h (TDD) 🔵
+- [ ] [TASK-0015: normalize.rs 単体テスト実装](TASK-0015.md) - 8h (TDD) 🔵
 - [ ] [TASK-0016: テスト入力サンプル作成](TASK-0016.md) - 8h (DIRECT) 🔵
 
 ### 依存関係
