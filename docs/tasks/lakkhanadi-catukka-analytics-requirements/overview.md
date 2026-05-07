@@ -39,7 +39,7 @@
 
 - [ ] Phase 1: 基盤構築
 - [x] Phase 2: Skill 本体プロンプト
-- [ ] Phase 3: 補助スクリプトとテストデータ
+- [x] Phase 3: 補助スクリプトとテストデータ
 - [ ] Phase 4: LLM-as-judge と検証
 
 ## マイルストーン
@@ -116,10 +116,10 @@ TASK-0001 ──→ TASK-0004 ──→ TASK-0005 ──┐
 
 ### タスク一覧
 
-- [ ] [TASK-0013: normalize.rs ルール定義（既知異形 + IAST 揺れ）](TASK-0013.md) - 8h (TDD) 🔵
-- [ ] [TASK-0014: normalize.rs 関数実装](TASK-0014.md) - 8h (TDD) 🔵
-- [ ] [TASK-0015: normalize.rs 単体テスト実装](TASK-0015.md) - 8h (TDD) 🔵
-- [ ] [TASK-0016: テスト入力サンプル作成](TASK-0016.md) - 8h (DIRECT) 🔵
+- [x] [TASK-0013: normalize.rs ルール定義（既知異形 + IAST 揺れ）](TASK-0013.md) - 8h (TDD) 🔵
+- [x] [TASK-0014: normalize.rs 関数実装](TASK-0014.md) - 8h (TDD) 🔵
+- [x] [TASK-0015: normalize.rs 単体テスト実装](TASK-0015.md) - 8h (TDD) 🔵
+- [x] [TASK-0016: テスト入力サンプル作成](TASK-0016.md) - 8h (DIRECT) 🔵
 
 ### 依存関係
 
