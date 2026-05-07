@@ -1,9 +1,9 @@
 # ADR: Codex Skill Platform and Prompt Architecture
 
 **ADR ID**: governance:adr-skill-platform
-**ステータス**: Accepted
+**ステータス**: Accepted（実装完了 — TASK-0004〜0021 で SKILL.md / agents/openai.yaml / 検証手順がすべて整備済。リリース前再確認は v0.1.0 タグ作成時）
 **作成日**: 2026-05-05
-**最終更新**: 2026-05-07（TASK-0003 で両プラットフォーム仕様を反映）
+**最終更新**: 2026-05-07（TASK-0003 で両プラットフォーム仕様を反映、TASK-0021 で実装完了ステータスに更新）
 **関連要件**: REQ-401, REQ-402, REQ-403, REQ-409, NFR-301
 **関連 codd ノード**: `governance:adr-skill-platform`（codd Wave 1）
 

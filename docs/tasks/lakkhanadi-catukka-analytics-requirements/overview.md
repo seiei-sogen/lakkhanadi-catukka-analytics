@@ -40,7 +40,7 @@
 - [ ] Phase 1: 基盤構築
 - [x] Phase 2: Skill 本体プロンプト
 - [x] Phase 3: 補助スクリプトとテストデータ
-- [ ] Phase 4: LLM-as-judge と検証
+- [x] Phase 4: LLM-as-judge と検証
 
 ## マイルストーン
 
@@ -138,11 +138,11 @@ TASK-0001 → TASK-0016
 
 ### タスク一覧
 
-- [ ] [TASK-0017: SKILL_JUDGE.md 8 観点判定プロンプト作成](TASK-0017.md) - 8h (TDD) 🔵
-- [ ] [TASK-0018: judge 統合テスト・サンプル評価実施](TASK-0018.md) - 8h (TDD) 🔵
-- [ ] [TASK-0019: Claude Code skills 動作検証](TASK-0019.md) - 8h (DIRECT) 🔵
-- [ ] [TASK-0020: Codex CLI skills 動作検証](TASK-0020.md) - 8h (DIRECT) 🔵
-- [ ] [TASK-0021: 受け入れ基準全テスト + README + リリース準備](TASK-0021.md) - 8h (DIRECT) 🔵
+- [x] [TASK-0017: SKILL_JUDGE.md 8 観点判定プロンプト作成](TASK-0017.md) - 8h (TDD) 🔵
+- [x] [TASK-0018: judge 統合テスト・サンプル評価実施](TASK-0018.md) - 8h (TDD) 🔵
+- [x] [TASK-0019: Claude Code skills 動作検証](TASK-0019.md) - 8h (DIRECT) 🔵
+- [x] [TASK-0020: Codex CLI skills 動作検証](TASK-0020.md) - 8h (DIRECT) 🔵
+- [x] [TASK-0021: 受け入れ基準全テスト + README + リリース準備](TASK-0021.md) - 8h (DIRECT) 🔵
 
 ### 依存関係
 
